@@ -1,0 +1,73 @@
+// Colors
+$color_neutral_50: #ffffff !default;
+$color_neutral_200: #f9fafc !default;
+$color_neutral_300: #f5f6fa !default;
+$color_neutral_400: #ebeaf0 !default;
+$color_neutral_500: #C3C8DA !default;
+$color_neutral_600: #808183 !default;
+$color_neutral_700: #6c6c6e !default;
+$color_neutral_800: #5d5e60 !default;
+$color_neutral_900: #0f0f0f !default;
+$color_primary_900: #f7de4a !default;
+$color_secondary_50: #e9ecf3 !default;
+$color_secondary_900: #151a41 !default;
+$color_error_900: #d50707 !default;
+$color_success_900: #27ae60 !default;
+
+// Breaking points
+$bp_xxs: 0 !default;
+$bp_xs: 360px !default;
+$bp_s: 480px !default;
+$bp_m: 768px !default;
+$bp_l: 992px !default;
+$bp_xl: 1200px !default;
+$bp_xxl: 1440px !default;
+
+// Breaking points
+$grid_breakpoints: (
+	xxs: 0,
+	xs: 360px,
+	s: 480px,
+	m: 768px,
+	l: 992px,
+	xl: 1200px,
+	xxl: 1440px,
+	) !default;
+
+// Elevation with drop-shadown
+$elevation_0: 0px 1px 2px rgba(0, 0, 0, 0.3
+);
+$elevation_1: 0px 1px 2px rgba(16, 16, 16, 0.3), 0px 1px 3px 1px rgba(16, 16, 16, 0.15);
+$elevation_2: 0px 1px 2px rgba(16, 16, 16, 0.3), 0px 2px 4px 2px rgba(16, 16, 16, 0.15);
+$eleavation_3: 0px 1px 2px rgba(16, 16, 16, 0.3), 0px 4px 8px 3px rgba(16, 16, 16, 0.15);
+$elevation_4: 0px 1px 2px rgba(16, 16, 16, 0.3), 0px 6px 10px 4px rgba(16, 16, 16, 0.15);
+$elevation_5: 0px 1px 2px rgba(16, 16, 16, 0.3), 0px 8px 12px 5px rgba(16, 16, 16, 0.15);
+
+// Inner Shadow
+
+$inner_shadow_0: inset 0px 1px 2px rgba(16, 16, 16, 0.3);
+$inner_shadow_1: inset 0px 1px 2px rgba(16, 16, 16, 0.3), inset 0px 1px 3px 1px rgba(16, 16, 16, 0.15);
+$inner_shadow_2: inset 0px 1px 2px rgba(16, 16, 16, 0.3), inset 0px 2px 4px 2px rgba(16, 16, 16, 0.15);
+$inner_shadow_3: inset 0px 1px 2px rgba(16, 16, 16, 0.3), inset 0px 4px 8px 3px rgba(16, 16, 16, 0.15);
+$inner_shadow_4: inset 0px 1px 2px rgba(16, 16, 16, 0.3), inset 0px 6px 10px 4px rgba(16, 16, 16, 0.15);
+$inner_shadow_5: inset 0px 1px 2px rgba(16, 16, 16, 0.3), inset 0px 8px 12px 5px rgba(16, 16, 16, 0.15);
+
+
+
+:export {
+	// Export all the colors to be used in JS
+	colorNeutral100: $color_neutral_50;
+	colorNeutral200: $color_neutral_200;
+	colorNeutral300: $color_neutral_300;
+	colorNeutral400: $color_neutral_400;
+	colorNeutral500: $color_neutral_500;
+	colorNeutral600: $color_neutral_600;
+	colorNeutral700: $color_neutral_700;
+	colorNeutral800: $color_neutral_800;
+	colorNeutral900: $color_neutral_900;
+	colorPrimary900: $color_primary_900;
+	colorSecondary50: $color_secondary_50;
+	colorSecondary900: $color_secondary_900;
+	colorError900: $color_error_900;
+	colorSuccess900: $color_success_900;
+}

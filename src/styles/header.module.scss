@@ -1,0 +1,30 @@
+@import "variables.module.scss";
+@import "mixins.scss";
+
+.header {
+	background-color: $color_neutral_50;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	img {
+		height: 25px;
+	}
+
+	@include media-breakpoint-up(s) {
+		height: 75px;
+
+		img {
+			height: 50px;
+		}
+	}
+
+	@include media-breakpoint-up(l) {
+		height: 125px;
+
+		img {
+			height: 75px;
+		}
+	}
+}
