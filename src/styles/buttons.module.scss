@@ -1,0 +1,77 @@
+@import 'variables.module.scss';
+
+.button_base {
+	all: unset;
+	box-sizing: border-box !important;
+	font-size: .75rem;
+	padding: 0.75rem 1.25rem;
+	border-radius: 0.25rem;
+	background-color: $color_neutral_700;
+	color: $color_neutral_50;
+	font-weight: 600;
+	line-height: 120%;
+	box-shadow: $elevation_0;
+
+	&:focus {
+		box-shadow: $active_outline;
+	}
+
+	&:hover,
+	&:active {
+		filter: brightness(1.1);
+	}
+
+	&:active {
+		box-shadow: none;
+	}
+
+	&:disabled {
+		filter: brightness(0.7);
+		box-shadow: none;
+	}
+}
+
+.button_primary {
+	background-color: $color_primary_900;
+	color: $color_secondary_900;
+}
+
+.button_secondary {
+	background-color: $color_secondary_50;
+	color: $color_secondary_900;
+}
+
+.button_success {
+	color: $color_success_900;
+	background-color: $color_neutral_50;
+	box-shadow: inset 0px 0px 0px 2px $color_success_900;
+
+	&:focus {
+		box-shadow: inset 0px 0px 0px 2px $color_success_900, $active_outline;
+	}
+}
+
+.button_error {
+	color: $color_error_900;
+	background-color: $color_neutral_50;
+	box-shadow: inset 0px 0px 0px 2px $color_error_900;
+
+	&:focus {
+		box-shadow: inset 0px 0px 0px 2px $color_error_900, $active_outline;
+	}
+}
+
+.button_small {
+	font-size: .5rem;
+	padding: 0.5rem 1rem;
+}
+
+.button_medium {
+	font-size: .75rem;
+	padding: 0.75rem 1.25rem;
+}
+
+.button_large {
+	font-size: 1rem;
+	padding: 1rem 1.5rem;
+}

@@ -33,10 +33,14 @@ $grid_breakpoints: (
 	xl: 1200px,
 	xxl: 1440px,
 	) !default;
+//
+
+$active_outline: 0px 1px 2px rgba(15, 38, 92, 0.55),
+	0px 1px 3px 1px rgba(15, 38, 92, 0.3
+);
 
 // Elevation with drop-shadown
-$elevation_0: 0px 1px 2px rgba(0, 0, 0, 0.3
-);
+$elevation_0: 0px 1px 2px rgba(0, 0, 0, 0.3);
 $elevation_1: 0px 1px 2px rgba(16, 16, 16, 0.3), 0px 1px 3px 1px rgba(16, 16, 16, 0.15);
 $elevation_2: 0px 1px 2px rgba(16, 16, 16, 0.3), 0px 2px 4px 2px rgba(16, 16, 16, 0.15);
 $eleavation_3: 0px 1px 2px rgba(16, 16, 16, 0.3), 0px 4px 8px 3px rgba(16, 16, 16, 0.15);
