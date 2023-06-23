@@ -1,15 +1,9 @@
-import DropdownMenuItem from './item'
-import styles from '../../../styles/dropdown-menu.module.scss'
-
-export type MenuItem = {
-  icon?: string
-  caption: string
-  href: string
-}
+import DropdownMenuItem from './item';
+import styles from '../../../styles/dropdown-menu.module.scss';
 
 type Props = {
-  options: MenuItem[]
-}
+  options: MenuItem[];
+};
 
 export default function DropdownMenuItemsWrapper({ options }: Props) {
   return (
@@ -23,5 +17,5 @@ export default function DropdownMenuItemsWrapper({ options }: Props) {
         />
       ))}
     </div>
-  )
+  );
 }

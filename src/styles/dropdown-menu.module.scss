@@ -1,5 +1,4 @@
 @import 'variables.module.scss';
-@import 'mixins.scss';
 
 .items_wrapper {
 	width: 96px;
@@ -9,9 +8,12 @@
 	border-radius: 0.25rem;
 	box-shadow: $elevation_1;
 	position: absolute;
-	right: 0;
-	// bottom: -220%;
-	transform: translateY(.5rem);
+	right: 25%;
+	z-index: 300;
+	background-color: $color_neutral_50;
+	transform: translateY(.125rem);
+	overflow: hidden;
+
 }
 
 .dropdown_button {

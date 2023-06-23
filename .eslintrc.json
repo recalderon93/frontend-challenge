@@ -27,7 +27,14 @@
         "spaced-comment": "error",
         "quotes": [
             "error",
-            "single"
+            "single",
+            {
+                "avoidEscape": true
+            }
+        ],
+        "semi": [
+            "error",
+            "always"
         ],
         "no-duplicate-imports": "error"
     },
