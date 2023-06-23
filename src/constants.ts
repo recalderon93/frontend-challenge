@@ -26,3 +26,12 @@ export const itemOrder: Partial<keyof DataItem>[] = [
 ];
 
 export const tableHeaders = itemOrder.map((item) => dataHeader[item]);
+
+export const formErrorMessages = {
+  required: 'Requerido',
+  invalidId: 'Invalido, ya existe un servicio con este ID',
+  minLength: (minLength: number) => `Este campo debe tener al menos ${minLength} caracteres`,
+  maxLength: (maxLength: number) => `Este campo debe tener al menos ${maxLength} caracteres`,
+  invalidLiberationDate: 'La Fecha debe ser igual o mayor a la fecha actual',
+  invalidRevisionDate: 'La Fecha debe ser exactamente un año posterior a la fecha de liberación',
+};
