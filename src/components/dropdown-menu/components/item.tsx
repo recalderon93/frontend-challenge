@@ -1,4 +1,4 @@
-import styles from '../../../styles/dropdown-menu.module.scss'
+import styles from '../../../styles/dropdown-menu.module.scss';
 
 type Props = {
   caption: string
@@ -14,5 +14,5 @@ export default function DropdownMenuItem({ caption, href, icon = null }: Props) 
         {caption}
       </a>
     </div>
-  )
+  );
 }
