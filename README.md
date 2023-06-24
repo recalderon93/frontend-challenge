@@ -15,5 +15,3 @@ yarn install
 yarn start
 ```
 
-## Test Coverage
-
