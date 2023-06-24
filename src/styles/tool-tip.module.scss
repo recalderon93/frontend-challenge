@@ -1,0 +1,57 @@
+@import 'variables.module.scss';
+@import 'mixins.scss';
+
+$icon-size: 12px;
+
+.container {
+	position: relative;
+
+	img {
+		width: $icon-size;
+		height: $icon-size;
+	}
+
+	&:hover,
+	&:focus {
+		.tool_tip {
+			display: block;
+
+		}
+	}
+}
+
+$toolt-tip-bg-color: $color_primary_900;
+
+.tool_tip {
+	box-sizing: border-box;
+	display: none;
+	position: absolute;
+	background-color: $toolt-tip-bg-color;
+	padding: 0 .75rem;
+	border-radius: .25rem;
+	right: 50%;
+	top: 200%;
+	transform: translateX(50%);
+
+	p {
+		min-width: 104px;
+		font-size: .75rem;
+		font-weight: 500;
+		line-height: 1.2;
+		color: $color_secondary_900;
+	}
+
+	&::before {
+		content: '';
+		display: block;
+		width: 0;
+		height: 0;
+		position: absolute;
+		border-top: 16px solid $toolt-tip-bg-color;
+		border-bottom: 16px solid transparent;
+		border-right: 16px solid transparent;
+		left: 50%;
+		transform: translateX(-87.5%) rotate(45deg);
+		top: -10px;
+	}
+}

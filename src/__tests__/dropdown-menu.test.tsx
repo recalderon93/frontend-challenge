@@ -4,6 +4,7 @@ import DropdownMenuItemsWrapper from '../components/dropdown-menu/components/men
 import DropdownMenu from '../components/dropdown-menu/dropdown-menu';
 import Icon1 from '../images/Icons-dots-vertical.svg';
 import Icon2 from '../images/Logo.svg';
+import { BrowserRouter } from 'react-router-dom';
 
 const list: MenuItem[] = [
   { caption: 'Caption 1', href: 'http://www.test1.com/', icon: Icon1 },
@@ -20,30 +21,54 @@ describe('DropdownMenuItem', () => {
   });
 
   test('Check if the component renders the Item caption', () => {
-    render(<DropdownMenuItem caption={itemCaption} href={href} />);
+    render(
+      <BrowserRouter>
+        <DropdownMenuItem caption={itemCaption} href={href} />
+      </BrowserRouter>,
+    );
     const menuItem = screen.getByRole('menuitem');
     expect(menuItem).toBeInTheDocument();
     expect(menuItem).toHaveTextContent(itemCaption);
   });
 
   test('Check if href is passed', () => {
-    render(<DropdownMenuItem caption={itemCaption} href={href} />);
+    render(
+      <BrowserRouter>
+        <DropdownMenuItem caption={itemCaption} href={href} />
+      </BrowserRouter>,
+    );
     const menuItem = screen.getByRole('menuitem');
     const link = within(menuItem).findByRole('link');
     waitFor(() => expect(link).toHaveAttribute('href', href));
   });
 
   test('Check that not renders any image tag if the prop icon is not passed', () => {
-    render(<DropdownMenuItem caption={itemCaption} href={href} />);
+    render(
+      <BrowserRouter>
+        <DropdownMenuItem caption={itemCaption} href={href} />
+      </BrowserRouter>,
+    );
     const menuItem = screen.findByRole('img');
     waitFor(() => expect(menuItem).not.toBeInTheDocument());
   });
 
   test('Check that renders an image tag if the prop icon is passed', () => {
-    render(<DropdownMenuItem caption={itemCaption} icon={Icon1} href={href} />);
+    render(
+      <BrowserRouter>
+        <DropdownMenuItem caption={itemCaption} icon={Icon1} href={href} />
+      </BrowserRouter>,
+    );
     const menuItem = screen.getByRole('img', { name: new RegExp(`${itemCaption}-icon`, 'i') });
     expect(menuItem).toBeInTheDocument();
     expect(menuItem).toHaveAttribute('src', Icon1);
+  });
+
+  test('Check that the Menu Item execute the onClick Callback', () => {
+    const fn = jest.fn();
+    render(<DropdownMenuItem caption={itemCaption} icon={Icon1} href={href} onClick={fn} />);
+    const menuItem = screen.getByRole('menuitem');
+    fireEvent.click(menuItem);
+    expect(fn).toBeCalled();
   });
 });
 
@@ -52,7 +77,11 @@ describe('DropdownMenuItemsWrapper', () => {
 
   beforeEach(() => {
     cleanup();
-    render(<DropdownMenuItemsWrapper options={list} />);
+    render(
+      <BrowserRouter>
+        <DropdownMenuItemsWrapper options={list} />
+      </BrowserRouter>,
+    );
     Menu = screen.getByRole('menu');
   });
 
@@ -81,12 +110,12 @@ describe('DropdownMenu', () => {
   beforeEach(() => {
     cleanup();
     render(
-      <>
+      <BrowserRouter>
         <div data-testid={outsideTestId} />
         <DropdownMenu options={list}>
           <div data-testid={testId} />
         </DropdownMenu>
-      </>,
+      </BrowserRouter>,
     );
     DropdownButton = screen.getByTestId(testId);
     OutsideDiv = screen.getByTestId(outsideTestId);
@@ -101,6 +130,16 @@ describe('DropdownMenu', () => {
   });
 
   test('Check if the Dropdown is closed after press outside the content', () => {
+    fireEvent.click(DropdownButton);
+    waitFor(() => expect(screen.findByRole('menu')).toBeInTheDocument());
+
+    fireEvent.mouseDown(OutsideDiv);
+
+    waitFor(() => expect(screen.findByRole('menu')).not.toBeInTheDocument());
+  });
+
+  test('Check if the Dropdown is closed after press outside the content', () => {
+    waitFor(() => expect(screen.findByRole('menu')).not.toBeInTheDocument());
     fireEvent.click(DropdownButton);
     waitFor(() => expect(screen.findByRole('menu')).toBeInTheDocument());
 

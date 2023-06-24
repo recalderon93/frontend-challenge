@@ -28,7 +28,7 @@ export const itemOrder: Partial<keyof DataItem>[] = [
 export const tableHeaders = itemOrder.map((item) => dataHeader[item]);
 
 export const formErrorMessages = {
-  required: 'Requerido',
+  required: 'Este campo es requerido.',
   invalidId: 'Invalido, ya existe un servicio con este ID',
   minLength: (minLength: number) => `Este campo debe tener al menos ${minLength} caracteres`,
   maxLength: (maxLength: number) => `Este campo debe tener al menos ${maxLength} caracteres`,

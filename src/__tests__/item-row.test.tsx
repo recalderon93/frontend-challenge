@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
-import { screen, render, cleanup, within } from '@testing-library/react';
+import { screen, render, cleanup, within, fireEvent } from '@testing-library/react';
 import ItemRow from '../components/table/components/item-row';
+import { BrowserRouter } from 'react-router-dom';
 
 describe('@components/ItemRow', () => {
   const data = {
@@ -11,15 +12,17 @@ describe('@components/ItemRow', () => {
     date_revision: new Date(),
     logo: 'https://www.visa.com.ec/dam/VCOM/regional/lac/SPA/Default/Pay%20With%20Visa/Tarjetas/visa-signature-400x225.jpg',
   };
-
+  const onDeleteCallback = jest.fn();
   beforeEach(() => {
     cleanup();
     render(
-      <table>
-        <tbody>
-          <ItemRow data={data} />
-        </tbody>
-      </table>,
+      <BrowserRouter>
+        <table>
+          <tbody>
+            <ItemRow data={data} onDeleteItem={onDeleteCallback} />
+          </tbody>
+        </table>
+      </BrowserRouter>,
     );
   });
 
@@ -35,5 +38,16 @@ describe('@components/ItemRow', () => {
     expect(img).toHaveProperty('src', data.logo);
     expect(rowCells[1]).toHaveTextContent(data.name);
     expect(rowCells[2]).toHaveTextContent(data.description);
+  });
+
+  test('Check onDelete Callback', () => {
+    const dotsMenu = screen.getByRole('button');
+
+    fireEvent.click(dotsMenu);
+
+    const deleteButton = screen.getByText('Eliminar');
+
+    fireEvent.click(deleteButton);
+    expect(onDeleteCallback).toHaveBeenCalled();
   });
 });

@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { tableHeaders } from '../../constants';
+import { dataHeader, dataDescription } from '../../constants';
 import styles from '../../styles/table.module.scss';
 import dinamicLabels from '../../utils/dinamic-label';
 import HeaderRow from './components/header-row';
@@ -7,10 +7,10 @@ import ItemRow from './components/item-row';
 
 type Props = {
   data: DataItem[];
+  onDeleteItem: (id: string) => void;
 };
 
-export default function Table({ data }: Props) {
-  const headers = tableHeaders;
+export default function Table({ data, onDeleteItem }: Props) {
   // Fill array with number from 1 to data.length
   const resultSelectionArray = Array.from({ length: data.length }, (_, index) => index + 1);
 
@@ -22,10 +22,10 @@ export default function Table({ data }: Props) {
     <div className={styles.table_container}>
       <div className={styles.scrollable}>
         <table className={styles.table} cellPadding={0} cellSpacing={0}>
-          <HeaderRow items={headers} />
+          <HeaderRow headers={dataHeader} description={dataDescription} />
           <tbody className={styles.table_body}>
             {data.map((item) => {
-              return <ItemRow key={item.id} data={item} />;
+              return <ItemRow key={item.id} data={item} onDeleteItem={onDeleteItem} />;
             })}
           </tbody>
         </table>

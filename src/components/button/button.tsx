@@ -1,16 +1,17 @@
 import { ComponentProps } from 'react';
 import ButtonBase from './button-base';
 import styles from '../../styles/buttons.module.scss';
+import { Link } from 'react-router-dom';
 
-export type ButtonVariants = 'primary' | 'secondary' | 'success' | 'error'
+export type ButtonVariants = 'primary' | 'secondary' | 'success' | 'error';
 
-export type ButtonSize = 'small' | 'medium' | 'large'
+export type ButtonSize = 'small' | 'medium' | 'large';
 
 type Props = {
-  variant: ButtonVariants
-  size?: ButtonSize
-  title: string
-} & ComponentProps<'button'>
+  variant: ButtonVariants;
+  size?: ButtonSize;
+  title: string;
+} & ComponentProps<'button'>;
 
 export const variantsMapper: Record<ButtonVariants, string> = {
   primary: styles.button_primary,

@@ -5,19 +5,19 @@ import { formErrorMessages } from '../constants';
 const financialProductSchema = yup.object().shape({
   id: yup
     .string()
+    .required(formErrorMessages.required)
     .min(3, formErrorMessages.minLength(3))
-    .max(10, formErrorMessages.maxLength(10))
-    .required(formErrorMessages.required),
+    .max(10, formErrorMessages.maxLength(10)),
   name: yup
     .string()
+    .required(formErrorMessages.required)
     .min(5, formErrorMessages.minLength(5))
-    .max(100, formErrorMessages.maxLength(100))
-    .required(formErrorMessages.required),
+    .max(100, formErrorMessages.maxLength(100)),
   description: yup
     .string()
+    .required(formErrorMessages.required)
     .min(10, formErrorMessages.maxLength(10))
-    .max(200, formErrorMessages.maxLength(200))
-    .required(formErrorMessages.required),
+    .max(200, formErrorMessages.maxLength(200)),
   logo: yup.string().required(formErrorMessages.required),
   date_release: yup
     .date()
@@ -28,8 +28,12 @@ const financialProductSchema = yup.object().shape({
     .required(formErrorMessages.required)
     .test('date_comparison', formErrorMessages.invalidRevisionDate, function (value) {
       const { date_release } = this.parent; // Obtener el valor de date_release
-      const expectedReleaseDate = date_release as Date;
-      expectedReleaseDate.setFullYear(expectedReleaseDate.getFullYear() + 1); // Increase a year;
+      const releaseDate = date_release as Date;
+      const expectedReleaseDate = new Date(
+        releaseDate.getFullYear() + 1,
+        releaseDate.getMonth(),
+        releaseDate.getDate(),
+      );
       return expectedReleaseDate <= value; // Realizar la comparación
     }),
 });

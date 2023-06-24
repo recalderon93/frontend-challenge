@@ -11,4 +11,5 @@ type MenuItem = {
   icon?: string;
   caption: string;
   href: string;
+  onClick?: () => void;
 };

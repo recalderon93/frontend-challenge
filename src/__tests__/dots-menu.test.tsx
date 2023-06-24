@@ -2,6 +2,7 @@ import { render, screen, cleanup, fireEvent } from '@testing-library/react';
 import ItemDotsMenu from '../components/table/components/dots-menu';
 import editIcon from '../images/Icons-edit-05.svg';
 import deleteIcon from '../images/Icons-trash-01.svg';
+import { BrowserRouter } from 'react-router-dom';
 
 describe('ItemRow', () => {
   const options = [
@@ -11,7 +12,11 @@ describe('ItemRow', () => {
 
   beforeEach(() => {
     cleanup();
-    render(<ItemDotsMenu options={options} />);
+    render(
+      <BrowserRouter>
+        <ItemDotsMenu options={options} />
+      </BrowserRouter>,
+    );
   });
 
   test('Check that the Options list are not showing off if the menu is not open', async () => {

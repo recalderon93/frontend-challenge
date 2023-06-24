@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import { screen, render, cleanup } from '@testing-library/react';
 import SearchProducts from '../components/templates/search-products';
+import { BrowserRouter } from 'react-router-dom';
 
 describe('@templates/SearchProducts', () => {
   const data: DataItem[] = [
@@ -15,11 +16,18 @@ describe('@templates/SearchProducts', () => {
   ];
   const onChangeValue = jest.fn();
   const inputValue = 'Input Value';
-
+  const fn = jest.fn();
   beforeEach(() => {
     cleanup();
     render(
-      <SearchProducts data={data} onChangeSearchValue={onChangeValue} searchValue={inputValue} />,
+      <BrowserRouter>
+        <SearchProducts
+          data={data}
+          onChangeSearchValue={onChangeValue}
+          searchValue={inputValue}
+          onDeleteItem={fn}
+        />
+      </BrowserRouter>,
     );
   });
 

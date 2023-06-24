@@ -2,6 +2,7 @@
 
 .button_base {
 	all: unset;
+	text-decoration: none !important;
 	box-sizing: border-box !important;
 	font-size: .75rem;
 	padding: 0.75rem 1.25rem;
@@ -11,6 +12,7 @@
 	font-weight: 600;
 	line-height: 120%;
 	box-shadow: $elevation_0;
+	cursor: pointer;
 
 	&:focus {
 		box-shadow: $active_outline;
@@ -18,7 +20,7 @@
 
 	&:hover,
 	&:active {
-		filter: brightness(1.1);
+		filter: brightness(.8);
 	}
 
 	&:active {

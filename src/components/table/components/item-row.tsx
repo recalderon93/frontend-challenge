@@ -6,12 +6,18 @@ import deleteIcon from '../../../images/Icons-trash-01.svg';
 
 type Props = {
   data: DataItem;
+  onDeleteItem: (id: string) => void;
 };
 
-export default function ItemRow({ data }: Props) {
+export default function ItemRow({ data, onDeleteItem }: Props) {
   const options = [
-    { caption: 'Editar', href: 'https://www.google.com/', icon: editIcon },
-    { caption: 'Eliminar', href: 'https://www.google.com/', icon: deleteIcon },
+    { caption: 'Editar', href: `/edit_product/${data.id}`, icon: editIcon },
+    {
+      caption: 'Eliminar',
+      href: '/',
+      icon: deleteIcon,
+      onClick: () => onDeleteItem(data.id),
+    },
   ];
 
   return (
@@ -21,8 +27,8 @@ export default function ItemRow({ data }: Props) {
       </td>
       <td>{data.name}</td>
       <td>{data.description}</td>
-      <td>{dateParser(data.date_release, 'DD/MM/YYYY')}</td>
-      <td>{dateParser(data.date_revision, 'DD/MM/YYYY')}</td>
+      <td>{dateParser(new Date(data.date_release), 'DD/MM/YYYY')}</td>
+      <td>{dateParser(new Date(data.date_revision), 'DD/MM/YYYY')}</td>
       <td>
         <ItemDotsMenu options={options} />
       </td>

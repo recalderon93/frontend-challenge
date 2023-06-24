@@ -15,7 +15,7 @@
 	@include media-breakpoint-down(m) {
 
 		overflow-x: scroll;
-		padding-bottom: 0.75rem;
+		padding-bottom: 2.75rem;
 	}
 }
 
@@ -44,12 +44,18 @@
 	color: $color_neutral_800;
 	text-align: left;
 
-	tr {
 
-		th:nth-child(1) {
-			flex: 1;
-			padding-left: 1rem;
+	th {
+		&>div {
+			display: flex;
+			align-items: center;
+			gap: .5rem;
 		}
+	}
+
+	th:nth-child(1) {
+		flex: 1;
+		padding-left: 1rem;
 	}
 }
 

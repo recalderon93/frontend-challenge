@@ -9,8 +9,8 @@ describe('@utils/financialProducSchema', () => {
     name: 'Tarjeta de Crédito',
     description: 'Tarjeta de consumo bajo la modalidad de crédito',
     logo: 'https://www.some-image.com',
-    date_release: new Date(2023, 3, 3),
-    date_revision: new Date(2024, 3, 3),
+    date_release: new Date(2024, 3, 3),
+    date_revision: new Date(2025, 3, 3),
   };
 
   async function checkError(

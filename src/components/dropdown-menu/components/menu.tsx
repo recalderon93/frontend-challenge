@@ -9,12 +9,7 @@ export default function DropdownMenuItemsWrapper({ options }: Props) {
   return (
     <div role='menu' className={styles.items_wrapper}>
       {options.map((option) => (
-        <DropdownMenuItem
-          key={option.caption}
-          href={option.href}
-          caption={option.caption}
-          icon={option.icon}
-        />
+        <DropdownMenuItem key={option.caption} {...option} />
       ))}
     </div>
   );

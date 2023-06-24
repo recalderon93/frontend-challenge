@@ -1,13 +1,13 @@
 import { render, screen, cleanup } from '@testing-library/react';
 import HeaderRow from '../components/table/components/header-row';
-import { tableHeaders } from '../constants';
+import { dataDescription, dataHeader } from '../constants';
 
 describe('@components/HeaderRow', () => {
   beforeEach(() => {
     cleanup();
     render(
       <table>
-        <HeaderRow items={tableHeaders} />
+        <HeaderRow headers={dataHeader} description={dataDescription} />
       </table>,
     );
   });
@@ -19,10 +19,10 @@ describe('@components/HeaderRow', () => {
     expect(headerRow).toHaveLength(1);
     expect(headerCells).toHaveLength(6);
 
-    expect(headerCells[0]).toHaveTextContent(tableHeaders[0]);
-    expect(headerCells[1]).toHaveTextContent(tableHeaders[1]);
-    expect(headerCells[2]).toHaveTextContent(tableHeaders[2]);
-    expect(headerCells[3]).toHaveTextContent(tableHeaders[3]);
-    expect(headerCells[4]).toHaveTextContent(tableHeaders[4]);
+    expect(headerCells[0]).toHaveTextContent(dataHeader.logo);
+    expect(headerCells[1]).toHaveTextContent(dataHeader.name);
+    expect(headerCells[2]).toHaveTextContent(dataHeader.description);
+    expect(headerCells[3]).toHaveTextContent(dataHeader.date_release);
+    expect(headerCells[4]).toHaveTextContent(dataHeader.date_revision);
   });
 });

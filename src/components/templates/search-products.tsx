@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import styles from '../../styles/templates.module.scss';
 import input from '../../styles/inputs.module.scss';
-import Button from '../button/button';
+import LinkButton from '../button/link-button';
 import Header from '../header/header';
 import Table from '../table/table';
 
@@ -9,9 +9,15 @@ type Props = {
   searchValue: string;
   onChangeSearchValue: (input: React.ChangeEvent<HTMLInputElement>) => void;
   data: DataItem[];
+  onDeleteItem: (id: string) => void;
 };
 
-export default function SearchProducts({ onChangeSearchValue, searchValue, data }: Props) {
+export default function SearchProducts({
+  onChangeSearchValue,
+  onDeleteItem,
+  searchValue,
+  data,
+}: Props) {
   return (
     <div className={styles.container}>
       <Header />
@@ -25,9 +31,9 @@ export default function SearchProducts({ onChangeSearchValue, searchValue, data 
           value={searchValue}
           onChange={onChangeSearchValue}
         />
-        <Button variant='primary' title='Agregar' />
+        <LinkButton to='/add_product' variant='primary' title='Agregar' />
       </div>
-      <Table data={data} />
+      <Table data={data} onDeleteItem={onDeleteItem} />
     </div>
   );
 }
